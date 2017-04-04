@@ -20,6 +20,10 @@ msg() {
     printf "\033[1;32m :: %s\n\033[0m" "$1"
 }
 
+msg "fixing ssh"
+eval $(ssh-agent -s)
+ssh-add C:/Users/'Joshua Slocum'/.ssh/id_rsa
+
 msg "Pulling down the \`master\` branch into \`public\` to help avoid merge conflicts"
 git subtree pull --prefix=public \
     git@github.com:$USERNAME/$USERNAME.github.io.git master -m "Merge origin master"
